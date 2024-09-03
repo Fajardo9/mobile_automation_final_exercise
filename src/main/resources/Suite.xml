@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Main suite">
+
+    <parameter name="usersToGenerate" value="1"/>
+    <parameter name="minLengthPassword" value="8"/>
+    <parameter name="maxLengthPassword" value="15"/>
+
+    <test name="Mobile Test">
+        <groups>
+            <run>
+                <include name="SetUp"/>
+                <include name="Regression"/>
+<!--                <include name="SignUp"/>-->
+<!--                <include name="Login"/>-->
+
+            </run>
+        </groups>
+        <classes>
+            <class name="com.automation.mobile.test.WebdriverIOTest"/>
+            <class name="com.automation.mobile.test.WebdriverIOLoginTest"/>
+        </classes>
+    </test>
+</suite>
