@@ -13,7 +13,61 @@
                 <include name="Regression"/>
 <!--                <include name="SignUp"/>-->
 <!--                <include name="Login"/>-->
-    
+            </run>
+        </groups>
+        <classes>
+            <class name="com.automation.mobile.test.WebdriverIOTest"/>
+            <class name="com.automation.mobile.test.WebdriverIOLoginTest"/>
+        </classes>
+    </test>
+    <test name="Sign Up test">
+        <groups>
+            <run>
+                <include name="SetUp"/>
+                <include name="SignUp"/>
+            </run>
+        </groups>
+    </test>
+    <test name="Login Test">
+        <groups>
+            <run>
+                <include name="SetUp"/>
+                <include name="Login"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="com.automation.mobile.test.WebdriverIOTest"/>
+            <class name="com.automation.mobile.test.WebdriverIOLoginTest"/>
+        </classes>
+    </test>
+    <test name="Smoke Test">
+        <groups>
+            <run>
+                <include name="Smoke"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="com.automation.mobile.test.WebdriverIOTest"/>
+            <class name="com.automation.mobile.test.WebdriverIOLoginTest"/>
+        </classes>
+    </test>
+    <test name="Cards Swipe Test">
+        <groups>
+            <run>
+                <include name="Setup"/>
+                <include name="SwipeCards"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="com.automation.mobile.test.WebdriverIOTest"/>
+            <class name="com.automation.mobile.test.WebdriverIOLoginTest"/>
+        </classes>
+    </test>
+    <test name="Vertical Swipe Test">
+        <groups>
+            <run>
+                <include name="Setup"/>
+                <include name="SwipeToBottom"/>
             </run>
         </groups>
         <classes>
