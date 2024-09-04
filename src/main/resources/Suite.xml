@@ -6,6 +6,7 @@
     <parameter name="minLengthPassword" value="8"/>
     <parameter name="maxLengthPassword" value="15"/>
 
+
     <test name="Mobile Test">
         <groups>
             <run>
