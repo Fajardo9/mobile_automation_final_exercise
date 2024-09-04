@@ -3,7 +3,6 @@ package com.automation.mobile.test;
 import com.automation.mobile.screens.LoginScreen;
 import com.automation.mobile.utils.User;
 import com.automation.mobile.utils.tests.BaseTest;
-import org.slf4j.LoggerFactory;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
@@ -21,10 +20,6 @@ public class WebdriverIOLoginTest extends BaseTest {
     private static final String NUMERICAL_CHARACTERS = "0123456789";
     private static final String SYMBOLIC_CHARACTERS = "!@#$%^&*()_-=+[]{}\\|;:'\",.<>/?";
     private static final String[] DOMAINS = {"@mail.com", "@globant.com", "@gmail.com"};
-
-    static {
-        LoggerFactory.getLogger(WebdriverIOLoginTest.class);
-    }
 
     private LoginScreen loginScreen;
     private List<User> userList;
@@ -60,7 +55,7 @@ public class WebdriverIOLoginTest extends BaseTest {
             loginScreen.getEmailField().sendKeys(user.getEmail());
             loginScreen.getPasswordField().sendKeys(user.getPassword());
             loginScreen.getUsrLoginBtn().click();
-            Assert.assertTrue(loginScreen.elementIsVisible(loginScreen.getLoginPopup()));
+            Assert.assertTrue(elementIsVisible(loginScreen.getLoginPopup()));
             loginScreen.getOkBtn().click();
             loginScreen.getEmailField().clear();
             loginScreen.getPasswordField().clear();
@@ -70,12 +65,12 @@ public class WebdriverIOLoginTest extends BaseTest {
     private void performSignUp(List<User> users){
         loginScreen.getSelectSignUp().click();
         for (User user: users) {
-            Assert.assertTrue(loginScreen.elementIsVisible(loginScreen.getConfirmPasswordField()));
+            Assert.assertTrue(elementIsVisible(loginScreen.getConfirmPasswordField()));
             loginScreen.getEmailField().sendKeys(user.getEmail());
             loginScreen.getPasswordField().sendKeys(user.getPassword());
             loginScreen.getConfirmPasswordField().sendKeys(user.getPassword());
             loginScreen.getSignUpBtn().click();
-            Assert.assertTrue(loginScreen.elementIsVisible(loginScreen.getLoginPopup()));
+            Assert.assertTrue(elementIsVisible(loginScreen.getLoginPopup()));
             loginScreen.getOkBtn().click();
             loginScreen.getEmailField().clear();
             loginScreen.getPasswordField().clear();
@@ -89,8 +84,8 @@ public class WebdriverIOLoginTest extends BaseTest {
     public void setUp(int usersToGenerate, int minLengthPassword, int maxLengthPassword) {
         loginScreen = returnLoginScreen();
         loginScreen.getLoginBtn().click();
-        Assert.assertTrue(loginScreen.elementIsSelected(loginScreen.getLoginBtn()));
-        Assert.assertTrue(loginScreen.elementIsVisible(loginScreen.getLoginTitle()));
+        Assert.assertTrue(elementIsSelected(loginScreen.getLoginBtn()));
+        Assert.assertTrue(elementIsVisible(loginScreen.getLoginTitle()));
         userList = usersGenerator(usersToGenerate,minLengthPassword,maxLengthPassword);
     }
 

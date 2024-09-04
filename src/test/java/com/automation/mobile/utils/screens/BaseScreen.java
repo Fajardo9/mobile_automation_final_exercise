@@ -3,13 +3,10 @@ package com.automation.mobile.utils.screens;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
-import org.jetbrains.annotations.NotNull;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.time.Duration;
+import static com.automation.mobile.utils.tests.BaseTest.log;
 
 public class BaseScreen {
     protected AndroidDriver driver;
@@ -71,21 +68,11 @@ public class BaseScreen {
     public BaseScreen(AndroidDriver driver) {
         this.driver = driver;
         PageFactory.initElements(new AppiumFieldDecorator(driver), this);
-        System.out.println(homeBtn.isDisplayed());
+        log.info("Button is displayed:{}", getHomeBtn().isDisplayed());
     }
 
-    public WebDriverWait setUpWait(long seconds) {
-        return new WebDriverWait(driver, Duration.ofSeconds(seconds));
-    }
 
-    public Boolean elementIsVisible(@NotNull WebElement element) {
-        setUpWait(4).until(ExpectedConditions.visibilityOf(element));
-        return element.isDisplayed();
-    }
 
-    public Boolean elementIsSelected(WebElement element) {
-        setUpWait(4).until(ExpectedConditions.elementToBeSelected(element));
-        return element.isSelected();
-    }
+
 
 }
