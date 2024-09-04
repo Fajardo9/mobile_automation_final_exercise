@@ -7,7 +7,7 @@
     <parameter name="maxLengthPassword" value="15"/>
 
 
-    <test name="Mobile Test">
+    <test name="Mobile Test" enabled="false">
         <groups>
             <run>
                 <include name="SetUp"/>
@@ -19,17 +19,21 @@
         <classes>
             <class name="com.automation.mobile.test.WebdriverIOTest"/>
             <class name="com.automation.mobile.test.WebdriverIOLoginTest"/>
+            <class name="com.automation.mobile.test.WebdriverIOSwipeTest"/>
         </classes>
     </test>
-    <test name="Sign Up test">
+    <test enabled="false" verbose="1" preserve-order="true" name="SignUp" >
         <groups>
             <run>
                 <include name="SetUp"/>
                 <include name="SignUp"/>
             </run>
         </groups>
+        <classes>
+            <class name="com.automation.mobile.test.WebdriverIOLoginTest"/>
+        </classes>
     </test>
-    <test name="Login Test">
+    <test name="Login Test" enabled="false">
         <groups>
             <run>
                 <include name="SetUp"/>
@@ -37,43 +41,39 @@
             </run>
         </groups>
         <classes>
-            <class name="com.automation.mobile.test.WebdriverIOTest"/>
             <class name="com.automation.mobile.test.WebdriverIOLoginTest"/>
         </classes>
     </test>
-    <test name="Smoke Test">
+    <test name="Smoke Test" enabled="false">
         <groups>
             <run>
-                <include name="Smoke"/>
+                <include name="SmokeTest"/>
             </run>
         </groups>
         <classes>
             <class name="com.automation.mobile.test.WebdriverIOTest"/>
-            <class name="com.automation.mobile.test.WebdriverIOLoginTest"/>
         </classes>
     </test>
-    <test name="Cards Swipe Test">
-        <groups>
-            <run>
-                <include name="Setup"/>
-                <include name="SwipeCards"/>
-            </run>
-        </groups>
-        <classes>
-            <class name="com.automation.mobile.test.WebdriverIOTest"/>
-            <class name="com.automation.mobile.test.WebdriverIOLoginTest"/>
-        </classes>
-    </test>
-    <test name="Vertical Swipe Test">
+    <test name="Cards Swipe Test" enabled="false">
         <groups>
             <run>
                 <include name="Setup"/>
-                <include name="SwipeToBottom"/>
+                <include name="Swipe Cards"/>
             </run>
         </groups>
         <classes>
-            <class name="com.automation.mobile.test.WebdriverIOTest"/>
-            <class name="com.automation.mobile.test.WebdriverIOLoginTest"/>
+            <class name="com.automation.mobile.test.WebdriverIOSwipeTest"/>
+        </classes>
+    </test>
+    <test name="Vertical Swipe Test" enabled="true">
+        <groups>
+            <run>
+                <include name="Setup"/>
+                <include name="Swipe To Bottom"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="com.automation.mobile.test.WebdriverIOSwipeTest"/>
         </classes>
     </test>
 </suite>

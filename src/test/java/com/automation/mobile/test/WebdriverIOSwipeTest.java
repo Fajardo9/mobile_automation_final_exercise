@@ -37,7 +37,7 @@ public class WebdriverIOSwipeTest extends BaseTest {
         Assert.assertTrue(elementIsVisible(swipeScreen.getSwipeSubtitle()));
     }
 
-    @Test(groups = {"SwipeCards", "Regression"})
+    @Test(groups = {"Swipe Cards", "Regression"})
     public void swipeCardsTest() {
         for (int i = 0; i <= availableCards.size() - 1; i++) {
             Assert.assertTrue(elementIsVisible(availableCards.get(i)));
@@ -54,7 +54,7 @@ public class WebdriverIOSwipeTest extends BaseTest {
 
     }
 
-    @Test(groups = {"SwipeToBottom", "Regression"})
+    @Test(groups = {"Swipe To Bottom", "Regression"})
     public void swipeToBottomTest() {
         Date dateTime = new Date();
         Long initTime = dateTime.getTime();
