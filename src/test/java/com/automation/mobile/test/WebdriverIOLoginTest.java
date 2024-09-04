@@ -89,7 +89,7 @@ public class WebdriverIOLoginTest extends BaseTest {
         userList = usersGenerator(usersToGenerate,minLengthPassword,maxLengthPassword);
     }
 
-    @Test(dependsOnGroups = {"SignUp"}, groups = {"Login","Regression"})
+    @Test(groups = {"Login","Regression"})
     public void testWebdriverIOLogin() {
         performLogin(userList);
     }
