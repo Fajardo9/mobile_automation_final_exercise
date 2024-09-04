@@ -65,6 +65,7 @@ public class WebdriverIOSwipeTest extends BaseTest {
             swipeVertical(30, 5, 50, 100);
         } while (!isElementVisible(swipeScreen.getSecretMessage()));
         Assert.assertTrue(isElementVisible(swipeScreen.getSecretLogo()));
+        log.info("Secret information found");
     }
 
 
@@ -76,43 +77,44 @@ public class WebdriverIOSwipeTest extends BaseTest {
         }
     }
 
-//    @Override
-//    public void swipeVertical(double startPercentage, double endPercentage, double anchorPercentageY, int duration) {
-//        Dimension size = driver.manage().window().getSize();
-//        int anchor = (int) (size.width * anchorPercentageY / 100);
-//        int startPoint = (int) (size.height * startPercentage / 100);
-//        int endPoint = (int) (size.height * endPercentage / 100);
-//        if (elementIsVisible(swipeScreen.getVisibleCard())) {
-//            Rectangle rectangle = swipeScreen.getVisibleCard().getRect();
-//            int cardTopY = rectangle.getY();
-//            int cardBottomY = rectangle.getY() + rectangle.getHeight();
-//            if (startPoint >= cardTopY && startPoint <= cardBottomY) {
-//                startPoint = cardBottomY + 20;
-//            }
-//            if (endPoint >= cardTopY && endPoint <= cardBottomY) {
-//                endPoint = cardTopY - 20;
-//            } else if (elementIsVisible(swipeScreen.getFinalCard())) {
-//                rectangle = swipeScreen.getFinalCard().getRect();
-//                cardTopY = rectangle.getY();
-//                cardBottomY = rectangle.getY() + rectangle.getHeight();
-//                if (startPoint >= cardTopY && startPoint <= cardBottomY) {
-//                    startPoint = cardBottomY + 20;
-//                }
-//            }
-//
-//
-//                System.out.println(anchor + " " + startPoint + " " + endPoint);
-//
-//                PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
-//                Sequence swipe = new Sequence(finger, 1)
-//                        .addAction(finger.createPointerMove(Duration.ofMillis(0), PointerInput.Origin.viewport(), anchor, startPoint))
-//                        .addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()))
-//                        .addAction(finger.createPointerMove(Duration.ofMillis(duration), PointerInput.Origin.viewport(), anchor, endPoint))
-//                        .addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
-//
-//                driver.perform(Collections.singletonList(swipe));
-//            }
-//
-//
-//        }
-    }
+
+    @Override
+    public void swipeVertical(double startPercentage, double endPercentage, double anchorPercentageY, int duration) {
+        Dimension size = driver.manage().window().getSize();
+        int anchor = (int) (size.width * anchorPercentageY / 100);
+        int startPoint = (int) (size.height * startPercentage / 100);
+        int endPoint = (int) (size.height * endPercentage / 100);
+        if (elementIsVisible(swipeScreen.getVisibleCard())) {
+            Rectangle rectangle = swipeScreen.getVisibleCard().getRect();
+            int cardTopY = rectangle.getY();
+            int cardBottomY = rectangle.getY() + rectangle.getHeight();
+            if (startPoint >= cardTopY && startPoint <= cardBottomY) {
+                startPoint = cardBottomY + 20;
+            }
+            if (endPoint >= cardTopY && endPoint <= cardBottomY) {
+                endPoint = cardTopY - 20;
+            } else if (elementIsVisible(swipeScreen.getFinalCard())) {
+                rectangle = swipeScreen.getFinalCard().getRect();
+                cardTopY = rectangle.getY();
+                cardBottomY = rectangle.getY() + rectangle.getHeight();
+                if (startPoint >= cardTopY && startPoint <= cardBottomY) {
+                    startPoint = cardBottomY + 20;
+                }
+            }
+
+
+                log.info("Tap positions: {}", "Anchor "+ anchor + " Start point " + startPoint + " End point " + endPoint);
+
+                PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
+                Sequence swipe = new Sequence(finger, 1)
+                        .addAction(finger.createPointerMove(Duration.ofMillis(0), PointerInput.Origin.viewport(), anchor, startPoint))
+                        .addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()))
+                        .addAction(finger.createPointerMove(Duration.ofMillis(duration), PointerInput.Origin.viewport(), anchor, endPoint))
+                        .addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
+
+                driver.perform(Collections.singletonList(swipe));
+            }
+
+
+        }
+}
